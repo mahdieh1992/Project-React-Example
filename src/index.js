@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './style.css'
 
 // // for write js in html we use of {}
 // const timer = () => {
@@ -32,12 +33,24 @@ class Describe extends React.Component {
 
 
 class Timer extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      time: new Date().toLocaleTimeString()
+    }
+  }
 
   render() {
+    setInterval(() => {
+      this.setState({
+        time: new Date().toLocaleTimeString()
+      })
+
+    }, 1000);
     return (
-      <div>
+      <div className='timer'>
         <Describe />
-        {new Date().toLocaleTimeString()}
+        {this.state.time}
 
       </div>
     )
